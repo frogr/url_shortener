@@ -8,7 +8,7 @@ class LinksController < ApplicationController
   end
 
   def id_search
-    @link = Link.find_by(link_id: params[:link_id])
+    @link = Link.find_by(link_id: params[:id])
     if !@link.nil?
       redirect_to link_url(@link)
     else
@@ -27,7 +27,8 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(link_params.merge(link_id: SecureRandom.uuid))
+    link_id = SecureRandom.uuid.last(10)
+    @link = Link.new(link_params.merge(link_id: link_id))
 
     respond_to do |format|
       if @link.save
@@ -50,7 +51,7 @@ class LinksController < ApplicationController
 
   private
     def set_link
-      @link = Link.find(params[:id])
+      @link = Link.friendly.find(params[:id])
     end
 
     def link_params

@@ -6,7 +6,7 @@
   <% @links.each do |link| %>
     <%= render link %>
     <p>
-      <%= link_to "Show this link", link %>
+      <%= link_to "Show this link", link, id: "#{link.link_id}" %>
     </p>
   <% end %>
 </div>
