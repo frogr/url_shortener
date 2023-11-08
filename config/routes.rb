@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :links
+  root "links#index"
+  get 'search/:link_id', to: 'links#id_search'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
