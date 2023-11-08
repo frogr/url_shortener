@@ -12,7 +12,7 @@ class LinksController < ApplicationController
     if !@link.nil?
       redirect_to link_url(@link)
     else
-      redirect_to root_path
+      render json: { error: "404, link not found" }, status: :not_found
     end
   end
 
