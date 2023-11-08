@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+ #links {
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+   gap: 20px;
+ }
+
+ .link-item {
+   border: 1px solid #ccc;
+   padding: 10px;
+   background-color: #f9f9f9;
+ }
+
+ .new-link {
+  border: 1px solid #589eff;
+  padding: 10px;
+  background-color: #acd6ff;
+  width: 10%;
+  margin-top: 10%;
+ }

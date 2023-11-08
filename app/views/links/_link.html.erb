@@ -9,4 +9,9 @@
     <%= link.url %>
   </p>
 
+  <p>
+  <strong>Shortened:</strong>
+  <%= link_to "#{request.fullpath}" + "/#{link.link_id}", "#{root_path}" + "links/" + "#{link.link_id}" %>
+  </p>
+
 </div>
