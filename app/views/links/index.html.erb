@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Link Shortener Service</h1>
+<h1>curl.lol</h1>
+<p> Click "New Link" to add a new URL. Then, copy the shortened url to use your new link!
 
 <div id="links">
   <% @links.each do |link| %>
@@ -8,7 +9,7 @@
       <div class="link-content">
         <h2 class="link-title">Id: <%= link.id %></h2>
         <p class="link-url">Url: <%= link.url %></p>
-        <p class="link-short">Shortened: <%= link_to "#{root_path}" + "links/" + "#{link.link_id}", "#{root_path}" + "links/" + "#{link.link_id}" %></p>
+        <p class="link-short">Shortened: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
       </div>
       <div class="link-action">
         <%= link_to "Show this link", link, class: "show-link-btn", id: "show-link-#{link.id}" %>

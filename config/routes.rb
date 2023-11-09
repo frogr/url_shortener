@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :links
   root "links#index"
+  get '/:link_id', to: 'links#id_search'
   get 'search/:link_id', to: 'links#id_search'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
