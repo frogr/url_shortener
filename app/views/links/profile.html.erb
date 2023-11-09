@@ -1,0 +1,12 @@
+<div class="profile">
+  <h1>My Links</h1>
+  <%= link_to "Home", root_path %>
+  <% @links.each do |link| %>
+    <div class="link-item">
+      <div class="link-content">
+      <a href="<%= link.url %>"><%= link.url %></a>
+      <p class="link-short">Shortened: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

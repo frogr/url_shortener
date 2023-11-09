@@ -48,6 +48,22 @@ h1 {
   flex: 1;
 }
 
+ .profile {
+   max-width: 600px;
+   margin: 0 auto;
+   padding: 20px;
+ }
+
+ .link a {
+   color: #333;
+   text-decoration: none;
+   font-size: 18px;
+ }
+
+ .link a:hover {
+   text-decoration: underline;
+ }
+
 .link-action {
   padding: 10px 15px;
   background: #f9f9f9;
@@ -76,6 +92,38 @@ h1 {
   text-decoration: none;
   border-radius: 4px;
   transition: background-color 0.3s;
+}
+
+.new-link-form-container {
+  text-align: center;
+  margin: auto;
+  padding: 20px;
+  max-width: 300px;
+}
+
+.new-link-form-input,
+.new-link-form-submit {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+}
+
+.new-link-form-input {
+  width: calc(100% - 42px);
+}
+
+.new-link-form-submit {
+  background-color: #557A95;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.new-link-form-submit:hover {
+  background-color: #406580;
 }
 
 .show-link-btn:hover,

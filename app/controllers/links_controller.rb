@@ -4,6 +4,7 @@ class LinksController < ApplicationController
   before_action :set_link, only: %i[ show destroy ]
 
   def index
+    @link = Link.new
     @links = Link.select { |x| x.link_id != nil }
   end
 
@@ -26,9 +27,16 @@ class LinksController < ApplicationController
     @link = Link.new
   end
 
-  def create
-    link_id = SecureRandom.uuid.last(10)
-    @link = Link.new(link_params.merge(link_id: link_id))
+  def profile
+    @links = current_user.links
+  end
+
+  def create    
+    if !current_user.nil?
+      @link = current_user.links.new(link_params.merge(link_id: new_unique_id))
+    else
+      @link = Link.new(link_params.merge(link_id: new_unique_id))
+    end
 
     respond_to do |format|
       if @link.save
@@ -50,6 +58,17 @@ class LinksController < ApplicationController
   end
 
   private
+    def new_unique_id
+      id = SecureRandom.uuid.last(10)
+
+      link = Link.find_by(link_id: id)
+      if link.nil?
+        return id
+      else
+        new_unique_id
+      end
+    end
+
     def set_link
       @link = Link.friendly.find(params[:id])
     end
