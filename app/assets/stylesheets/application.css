@@ -92,7 +92,9 @@ h1 {
 }
 
 .show-link-btn,
-.delete-link-btn {
+.delete-link-btn,
+.copy-btn,
+.sign-out-btn {
   padding: 10px 15px;
   border-radius: 20px;
   font-weight: bold;
@@ -122,6 +124,17 @@ h1 {
 
 .show-link-btn {
   background-color: #27fb6b;
+  color: white;
+}
+
+.copy-btn,
+.sign-out-btn {
+  background-color: grey;
+  color: white;
+}
+
+.copy-btn:hover {
+  background-color: rgb(215, 215, 215);
   color: white;
 }
 

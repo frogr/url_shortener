@@ -8,7 +8,7 @@
     <%= link_to "log in", new_user_session_path, class: "link-url" %> to save links to your profile.
   <% else %>
     <%= link_to "My Profile", user_profile_path, class: "link-url" %>
-    <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+    <%= button_to "Sign out", destroy_user_session_path, class: "sign-out-btn", method: :delete %>
   <% end %>
 </div>
 
@@ -39,6 +39,7 @@
         <div class="link-content">
           <p>URL: <%= link_to link.url, class: "link-url" %></p>
           <p>Short: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}", class: "link-url" %></p>
+          <button class="copy-btn" data-clipboard-text="<%= "#{root_url}" + "#{link.link_id}" %>">Copy</button>
           <p>Clicks: <%= link.click_count %></p>
         </div>
         <div class="link-action">
