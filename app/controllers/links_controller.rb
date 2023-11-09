@@ -8,7 +8,7 @@ class LinksController < ApplicationController
   end
 
   def id_search
-    @link = Link.find_by(link_id: params[:id])
+    @link = Link.find_by(link_id: params[:link_id])
     if !@link.nil?
       redirect_to link_url(@link)
     else
