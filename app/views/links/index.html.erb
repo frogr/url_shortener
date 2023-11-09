@@ -1,24 +1,27 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>curl.lol</h1>
-<p> Click "New Link" to add a new URL. Then, copy the shortened url to use your new link!</p>
+<p class="center"> Click "New Link" to add a new URL. Then, copy the shortened url to use your new link!</p>
+<div class="info">
+  <% if current_user.nil? %>
+    <%= link_to "Sign up", new_user_registration_path, class: "link-url" %> or 
+    <%= link_to "log in", new_user_session_path, class: "link-url" %> to save links to your profile.
+  <% else %>
+    <%= link_to "My Profile", user_profile_path, class: "link-url" %>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+  <% end %>
+</div>
 
-<% if current_user.nil? %>
-  <%= link_to "Sign up", new_user_registration_path %> or 
-  <%= link_to "log in", new_user_session_path %> to save links to your profile.
-<% else %>
-  You are signed in.
-  <%= link_to "My Profile", user_profile_path %>
-  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
-<% end %>
+<div class="form-wrapper">
+  <%= render 'form' %>
+</div>
 
 <% if current_user.nil? %>
   <div id="links">
     <% @links.each do |link| %>
       <div class="link-item">
         <div class="link-content">
-          <h2 class="link-title">Id: <%= link.id %></h2>
-          <p class="link-url">Url: <%= link.url %></p>
+          <p class="link-url">URL: <%= link.url %></p>
           <p class="link-short">Shortened: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
           <p>Clicks: <%= link.click_count %></p>
         </div>
@@ -34,7 +37,6 @@
     <% current_user.links.each do |link| %>
       <div class="link-item">
         <div class="link-content">
-          <h2 class="link-title">Id: <%= link.id %></h2>
           <p class="link-url">Url: <%= link.url %></p>
           <p class="link-short">Shortened: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
           <p>Clicks: <%= link.click_count %></p>
@@ -52,7 +54,6 @@
     <% @links.each do |link| %>
       <div class="link-item">
         <div class="link-content">
-          <h2 class="link-title">Id: <%= link.id %></h2>
           <p class="link-url">Url: <%= link.url %></p>
           <p class="link-short">Shortened: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
           <p>Clicks: <%= link.click_count %></p>
@@ -64,5 +65,3 @@
     <% end %>
   </div>
 <% end %>
-
-<%= render 'form' %>
