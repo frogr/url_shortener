@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>curl.lol</h1>
-<p class="center"> Click "New Link" to add a new URL. Then, copy the shortened url to use your new link!</p>
+<p class="center"> Click "New Link" to add a new URL. Then, copy the Short url to use your new link!</p>
 <div class="info">
   <% if current_user.nil? %>
     <%= link_to "Sign up", new_user_registration_path, class: "link-url" %> or 
@@ -21,12 +21,12 @@
     <% @links.each do |link| %>
       <div class="link-item">
         <div class="link-content">
-          <p class="link-url">URL: <%= link.url %></p>
-          <p class="link-short">Shortened: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
+          <p class="link-url">URL: <%= link_to link.url %></p>
+          <p class="link-short">Short: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
           <p>Clicks: <%= link.click_count %></p>
         </div>
         <div class="link-action">
-          <%= link_to "Show this link", link, class: "show-link-btn", id: "show-link-#{link.id}" %>
+          <%= link_to "Edit", link, class: "show-link-btn", id: "show-link-#{link.id}" %>
         </div>
       </div>
     <% end %>
@@ -37,12 +37,13 @@
     <% current_user.links.each do |link| %>
       <div class="link-item">
         <div class="link-content">
-          <p class="link-url">Url: <%= link.url %></p>
-          <p class="link-short">Shortened: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
+          <p>URL: <%= link_to link.url, class: "link-url" %></p>
+          <p>Short: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}", class: "link-url" %></p>
           <p>Clicks: <%= link.click_count %></p>
         </div>
         <div class="link-action">
-          <%= link_to "Show this link", link, class: "show-link-btn", id: "show-link-#{link.id}" %>
+          <%= link_to "Edit", link, class: "show-link-btn", id: "show-link-#{link.id}" %>
+          <%= button_to "Delete", link_path(link), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-link-btn" %>
         </div>
       </div>
     <% end %>
@@ -54,12 +55,13 @@
     <% @links.each do |link| %>
       <div class="link-item">
         <div class="link-content">
-          <p class="link-url">Url: <%= link.url %></p>
-          <p class="link-short">Shortened: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
+          <p class="link-url">URL: <%= link_to link.url %></p>
+          <p class="link-short link-url">Short: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
           <p>Clicks: <%= link.click_count %></p>
         </div>
         <div class="link-action">
-          <%= link_to "Show this link", link, class: "show-link-btn", id: "show-link-#{link.id}" %>
+          <%= link_to "Edit", link, class: "show-link-btn", id: "show-link-#{link.id}" %>
+          <%= link_to "Delete", link, method: :delete, data: { confirm: "Are you sure?" }, class: "delete-link-btn" %>
         </div>
       </div>
     <% end %>

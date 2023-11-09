@@ -48,9 +48,10 @@ class LinksController < ApplicationController
   end
 
   def destroy
+    @link = current_user.links.friendly.find(params[:id])
     @link.destroy!
     respond_to do |format|
-      format.html { redirect_to links_url, notice: "Link was successfully destroyed." }
+      format.html { redirect_to root_path, notice: "Link was successfully destroyed." }
       format.json { head :no_content }
     end
   end
