@@ -1,17 +1,3 @@
 <div id="<%= dom_id link %>">
-  <p>
-    <strong>Id:</strong>
-    <%= link.id %>
-  </p>
-
-  <p>
-    <strong>Url:</strong>
-    <%= link.url %>
-  </p>
-
-  <p>
-  <strong>Shortened:</strong>
-  <%= link_to "#{request.fullpath}" + "/#{link.link_id}", "#{root_path}" + "links/" + "#{link.link_id}" %>
-  </p>
 
 </div>

@@ -1,15 +1,21 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Links</h1>
+<h1>Link Shortener Service</h1>
 
 <div id="links">
   <% @links.each do |link| %>
     <div class="link-item">
-      <%= render link %>
+      <div class="link-content">
+        <h2 class="link-title">Id: <%= link.id %></h2>
+        <p class="link-url">Url: <%= link.url %></p>
+        <p class="link-short">Shortened: <%= "#{root_path}" + "links/" + "#{link.link_id}", "#{root_path}" + "links/" + "#{link.link_id}" %></p>
+      </div>
+      <div class="link-action">
+        <%= link_to "Show this link", link, class: "show-link-btn", id: "show-link-#{link.id}" %>
+      </div>
     </div>
   <% end %>
 </div>
 
-<div class="new-link">
-<%= link_to "New link", new_link_path %>
-</div>
+<%= link_to "New link", new_link_path, class: "new-link-btn" %>
+
