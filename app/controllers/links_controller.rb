@@ -2,15 +2,16 @@ require 'securerandom'
 
 class LinksController < ApplicationController
   before_action :set_link, only: %i[ show destroy ]
+  after_action :track_link_click, only: :show
 
   def index
     @link = Link.new
-    @links = Link.select { |x| x.link_id != nil }
+    @links = Link.where.not(link_id: nil)
   end
 
   def id_search
     @link = Link.find_by(link_id: params[:link_id])
-    if !@link.nil?
+    if @link.present?
       redirect_to link_url(@link)
     else
       render json: { error: "404, link not found" }, status: :not_found
@@ -31,16 +32,14 @@ class LinksController < ApplicationController
     @links = current_user.links
   end
 
-  def create    
-    if !current_user.nil?
-      @link = current_user.links.new(link_params.merge(link_id: new_unique_id))
-    else
-      @link = Link.new(link_params.merge(link_id: new_unique_id))
-    end
+  def create
+    @link = current_user ? current_user.links.new(link_params) : Link.new(link_params)
+    @link.link_id = new_unique_id
 
     respond_to do |format|
       if @link.save
         format.html { redirect_to root_path, notice: "Link was successfully saved." }
+        ahoy.track "Link created", link_id: @link.id
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @link.errors, status: :unprocessable_entity }
@@ -50,7 +49,6 @@ class LinksController < ApplicationController
 
   def destroy
     @link.destroy!
-
     respond_to do |format|
       format.html { redirect_to links_url, notice: "Link was successfully destroyed." }
       format.json { head :no_content }
@@ -58,22 +56,23 @@ class LinksController < ApplicationController
   end
 
   private
-    def new_unique_id
+
+  def new_unique_id
+    loop do
       id = SecureRandom.uuid.last(10)
-
-      link = Link.find_by(link_id: id)
-      if link.nil?
-        return id
-      else
-        new_unique_id
-      end
+      return id unless Link.exists?(link_id: id)
     end
+  end
 
-    def set_link
-      @link = Link.friendly.find(params[:id])
-    end
+  def set_link
+    @link = Link.friendly.find(params[:id])
+  end
 
-    def link_params
-      params.require(:link).permit(:url, :link_id)
-    end
+  def link_params
+    params.require(:link).permit(:url)
+  end
+
+  def track_link_click
+    ahoy.track "Link clicked", link_id: @link
+  end
 end
