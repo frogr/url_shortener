@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_09_202415) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_10_032134) do
   create_table "ahoy_events", force: :cascade do |t|
     t.integer "visit_id"
     t.integer "user_id"
@@ -54,6 +54,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_09_202415) do
     t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
     t.index ["visitor_token", "started_at"], name: "index_ahoy_visits_on_visitor_token_and_started_at"
+  end
+
+  create_table "blips", force: :cascade do |t|
+    t.text "content"
+    t.string "unique_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unique_url"], name: "index_blips_on_unique_url", unique: true
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

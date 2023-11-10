@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'blip/new'
+  get 'blip/create'
+  get 'blip/show'
   devise_for :users
   resources :links
   root to: "links#index"
@@ -7,6 +10,7 @@ Rails.application.routes.draw do
   get '/user/profile', to: 'links#profile'
   get '/pages/:page', to: 'links#index', as: 'paginate_links'
   get '/download/export_to_csv', to: 'links#export_to_csv', as: :export_to_csv
+  resources :blip, only: [:new, :create, :index, :show]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

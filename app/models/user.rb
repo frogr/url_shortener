@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :links
+  has_many :blips
   has_many :events, class_name: 'Ahoy::Event', as: :subject
   has_many :visits, class_name: "Ahoy::Visit"
 
