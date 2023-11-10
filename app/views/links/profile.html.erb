@@ -5,7 +5,7 @@
     <div class="link-item profile-page-item">
       <div class="link-content">
       <a href="<%= link.url %>"><%= link.url %></a>
-      <p class="link-short">Shortened: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
+      <p class="link-short"><%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
       </div>
     </div>
   <% end %>

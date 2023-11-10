@@ -58,6 +58,7 @@ h1 {
 }
 
 .profile-page-item {
+  width: 100%;
   margin: 5%;
 }
 
@@ -79,7 +80,6 @@ h1 {
 }
 
  .profile {
-   max-width: 600px;
    margin: 0 auto;
    padding: 20px;
  }
