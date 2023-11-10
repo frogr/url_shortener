@@ -9,7 +9,7 @@
   <% else %>
     <%= link_to "My Profile", user_profile_path, class: "link-url" %>
     <% if current_user.admin? %>
-      <%= link_to "Generate text blips", new_blip_path, class: "link-url" %>
+      <%= link_to "Blips", new_blip_path, class: "link-url" %>
     <% end %>
     <%= button_to "Sign out", destroy_user_session_path, class: "sign-out-btn", method: :delete %>
   <% end %>
