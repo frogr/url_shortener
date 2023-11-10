@@ -158,7 +158,7 @@ a {
 
 .copy-btn,
 .sign-out-btn {
-  background-color: grey;
+  background-color: rgb(129, 108, 152);
   color: white;
 }
 
@@ -174,9 +174,9 @@ a {
 }
 
 .show-link-btn,
-.new-link-btn {
+.new-link-btn,
+.copy-btn {
   display: inline-block;
-  background-color: #09a129;
   color: white;
   text-align: center;
   padding: 10px 20px;
@@ -185,6 +185,11 @@ a {
   transition: background-color 0.3s;
   box-shadow: none;
   border: 1px solid #042027;
+}
+
+.show-link-btn,
+.new-link-btn {
+  background-color: #09a129;
 }
 
 .form-wrapper {

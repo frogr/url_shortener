@@ -23,11 +23,11 @@
         <div class="link-content">
           <p class=>URL: <%= link_to "#{link.url}", link.url %></p>
           <p class=>Short: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
-          <button class="copy-btn" data-clipboard-text="<%= "#{root_url}" + "#{link.link_id}" %>">Copy</button>
           <p>Clicks: <%= link.click_count %></p>
         </div>
         <div class="link-action">
           <%= link_to "Edit", link, class: "show-link-btn", id: "show-link-#{link.id}" %>
+          <button class="copy-btn" data-clipboard-text="<%= "#{root_url}" + "#{link.link_id}" %>">Copy</button>
         </div>
       </div>
     <% end %>
@@ -41,11 +41,11 @@
         <div class="link-content">
           <p>URL: <%= link_to "#{link.url}", link.url %></p>
           <p>Short: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
-          <button class="copy-btn" data-clipboard-text="<%= "#{root_url}" + "#{link.link_id}" %>">Copy</button>
           <p>Clicks: <%= link.click_count %></p>
         </div>
         <div class="link-action">
           <%= link_to "Edit", link, class: "show-link-btn", id: "show-link-#{link.id}" %>
+          <button class="copy-btn" data-clipboard-text="<%= "#{root_url}" + "#{link.link_id}" %>">Copy</button>
           <%= button_to "Delete", link_path(link), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-link-btn" %>
         </div>
       </div>
@@ -60,11 +60,11 @@
         <div class="link-content">
           <p>URL: <%= link_to "#{link.url}", link.url %></p>
           <p>Short: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
-          <button class="copy-btn" data-clipboard-text="<%= "#{root_url}" + "#{link.link_id}" %>">Copy</button>
           <p>Clicks: <%= link.click_count %></p>
         </div>
         <div class="link-action">
           <%= link_to "Edit", link, class: "show-link-btn", id: "show-link-#{link.id}" %>
+          <button class="copy-btn" data-clipboard-text="<%= "#{root_url}" + "#{link.link_id}" %>">Copy</button>
           <%= link_to "Delete", link, method: :delete, data: { confirm: "Are you sure?" }, class: "delete-link-btn" %>
         </div>
       </div>
