@@ -6,7 +6,18 @@ class LinksController < ApplicationController
 
   def index
     @link = Link.new
-    @links = Link.where.not(link_id: nil).page(params[:page]).per(12)
+    @links = links_for_role
+    # @links = Link.where.not(link_id: nil).page(params[:page]).per(12)
+  end
+
+  def links_for_role
+    if current_user.nil? || current_user.role == "admin"
+      @links = Link.where.not(link_id: nil).page(params[:page]).per(12)
+    elsif current_user.role == "user"
+      @links = Link.where(user_id: current_user.id).page(params[:page]).per(12)
+    else
+      render json: { error: "503, no links available for this role" }
+    end
   end
 
   def id_search
