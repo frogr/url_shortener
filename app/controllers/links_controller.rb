@@ -6,7 +6,7 @@ class LinksController < ApplicationController
 
   def index
     @link = Link.new
-    @links = Link.where.not(link_id: nil).page(params[:page]).per(10)
+    @links = Link.where.not(link_id: nil).page(params[:page]).per(12)
   end
 
   def id_search
