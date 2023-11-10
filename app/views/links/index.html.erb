@@ -21,8 +21,8 @@
     <% @links.each do |link| %>
       <div class="link-item">
         <div class="link-content">
-          <p class="link-url">URL: <%= link_to link.url %></p>
-          <p class="link-short">Short: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
+          <p class=>URL: <%= link_to "#{link.url}", link.url %></p>
+          <p class=>Short: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
           <button class="copy-btn" data-clipboard-text="<%= "#{root_url}" + "#{link.link_id}" %>">Copy</button>
           <p>Clicks: <%= link.click_count %></p>
         </div>
@@ -39,8 +39,8 @@
     <% current_user.links.each do |link| %>
       <div class="link-item">
         <div class="link-content">
-          <p>URL: <%= link_to link.url, class: "link-url" %></p>
-          <p>Short: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}", class: "link-url" %></p>
+          <p>URL: <%= link_to "#{link.url}", link.url %></p>
+          <p>Short: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
           <button class="copy-btn" data-clipboard-text="<%= "#{root_url}" + "#{link.link_id}" %>">Copy</button>
           <p>Clicks: <%= link.click_count %></p>
         </div>
@@ -58,8 +58,8 @@
     <% @links.each do |link| %>
       <div class="link-item">
         <div class="link-content">
-          <p class="link-url">URL: <%= link_to link.url %></p>
-          <p class="link-short link-url">Short: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
+          <p>URL: <%= link_to "#{link.url}", link.url %></p>
+          <p>Short: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
           <button class="copy-btn" data-clipboard-text="<%= "#{root_url}" + "#{link.link_id}" %>">Copy</button>
           <p>Clicks: <%= link.click_count %></p>
         </div>
