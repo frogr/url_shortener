@@ -49,6 +49,10 @@ h1 {
   margin-top: 20px;
 }
 
+.profile-page-item {
+  margin: 5%;
+}
+
 .link-item {
   background-color: #a7d3de;
   border-radius: 15px;
