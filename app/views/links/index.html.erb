@@ -16,6 +16,10 @@
   <%= render 'form' %>
 </div>
 
+<% if current_user %>
+  <%= link_to 'Export as CSV', export_to_csv_path, class: "btn" %>
+<% end %>
+
 <div id="links">
   <% @links.each do |link| %>
     <div class="link-item">

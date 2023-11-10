@@ -1,4 +1,5 @@
 require 'securerandom'
+require 'csv'
 
 class LinksController < ApplicationController
   before_action :set_link, only: %i[ show destroy ]
@@ -18,6 +19,24 @@ class LinksController < ApplicationController
     else
       render json: { error: "503, no links available for this role" }
     end
+  end
+
+  def export_to_csv
+    @links = links_for_role
+
+    csv_data = CSV.generate(headers: true) do |csv|
+      csv << [ "original_url", "shortened_url", "click_count" ]
+
+      @links.each do |link|
+        csv << [ link.url, full_url(link.slug), link.click_count]
+      end
+    end
+
+    send_data csv_data, filename: "my_links.csv"
+  end
+
+  def full_url(slug)
+    root_url.to_s + slug.to_s
   end
 
   def id_search
