@@ -7,6 +7,7 @@ gem "rails", "~> 7.1.1"
 gem 'pry', '~> 0.14.2'
 gem 'friendly_id', '~> 5.4.0'
 gem "ahoy_matey"
+gem "kaminari"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

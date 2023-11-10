@@ -31,6 +31,7 @@
         </div>
       </div>
     <% end %>
+  </div>
 <% end %>
 
 <% if current_user&.role == "user" %>
@@ -70,3 +71,7 @@
     <% end %>
   </div>
 <% end %>
+
+<div class="pagination link-url">
+  <%= paginate @links %>
+</div>

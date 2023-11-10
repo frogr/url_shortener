@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/:link_id', to: 'links#id_search'
   get 'search/:link_id', to: 'links#id_search'
   get '/user/profile', to: 'links#profile'
+  get '/pages/:page', to: 'links#index', as: 'paginate_links'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
