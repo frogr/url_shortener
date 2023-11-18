@@ -19,6 +19,6 @@ class Link < ApplicationRecord
   def full_url
     url = self.url
     url = "https://#{url}" unless url.start_with?('http://', 'https://')
-    url
+    url 
   end
 end
