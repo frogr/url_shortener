@@ -1,0 +1,86 @@
+.show-link-btn:hover,
+.new-link-btn:hover {
+  background-color: #27fb6b;
+  color: #333;
+}
+
+.new-link-btn {
+  margin-top: 30px;
+  display: block;
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.show-link-btn,
+.delete-link-btn,
+.copy-btn,
+.sign-out-btn {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.1s;
+  cursor: pointer;
+  border: none;
+  display: inline-block;
+  min-width: 80px;
+  box-sizing: border-box;
+}
+
+.copy-btn {
+  padding: 5%;
+}
+
+.delete-link-btn {
+  background-color: #a12909;
+  color: white;
+}
+
+.delete-link-btn:hover {
+  background-color: #7a1f07;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.show-link-btn {
+  background-color: #27fb6b;
+  color: white;
+}
+
+.copy-btn,
+.sign-out-btn {
+  background-color: rgb(129, 108, 152);
+  color: white;
+}
+
+.copy-btn:hover {
+  background-color: rgb(215, 215, 215);
+  color: black;
+}
+
+.show-link-btn:hover {
+  background-color: #14cc60;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.show-link-btn,
+.new-link-btn,
+.copy-btn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 35px;
+  transition: background-color 0.3s;
+  box-shadow: none;
+  border: 1px solid #042027;
+}
+
+.show-link-btn,
+.new-link-btn {
+  background-color: #09a129;
+}

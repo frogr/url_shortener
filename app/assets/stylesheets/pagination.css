@@ -1,0 +1,24 @@
+/* pagination.css */
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.pagination a {
+  margin-right: 10px;
+}
+
+.pagination .next_page,
+.pagination .prev_page,
+.pagination .last_page {
+  margin-right: 15px;
+}
+
+.pagination .current {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #27fb6b;
+}

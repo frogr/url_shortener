@@ -1,0 +1,36 @@
+@media (max-width: 1200px) {
+  #links {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+  }
+
+  .link-item {
+    min-height: 220px;
+  }
+
+  .link-content {
+    padding: 10px;
+  }
+
+  .link-action {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px;
+    gap: 5px;
+  }
+
+  .show-link-btn,
+  .delete-link-btn,
+  .copy-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  .delete-link-btn {
+    background-color: #a12909;
+    color: white;
+  }
+}
