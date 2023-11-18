@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :links
   root to: "links#index"
   get '/:link_id', to: 'links#id_search'
+  get '/:link_id/edit', to: 'links#edit', as: 'link_edit'
   get 'search/:link_id', to: 'links#id_search'
   get '/user/profile', to: 'links#profile'
   get '/pages/:page', to: 'links#index', as: 'paginate_links'

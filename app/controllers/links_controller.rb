@@ -11,6 +11,11 @@ class LinksController < ApplicationController
     # @links = Link.where.not(link_id: nil).page(params[:page]).per(12)
   end
 
+  def edit
+    @link = Link.friendly.find params[:link_id]
+    render json: { url: @link.url, shortened: @link.shortened_url }
+  end
+
   def links_for_role
     if current_user.nil? || current_user.role == "admin"
       @links = Link.where.not(link_id: nil).order(created_at: :desc).page(params[:page]).per(12)

@@ -11,4 +11,8 @@ class Link < ApplicationRecord
               .where("properties::json -> 'link_id' ->> 'id' = ?", id.to_s)
               .count
   end
+
+  def shortened_url
+    ENV["ROOT_URL"] + "/" + self.link_id
+  end
 end

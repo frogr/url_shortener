@@ -24,12 +24,12 @@
     <div class="link-item">
       <div class="link-content">
         <p class=>URL: <%= link_to "#{link.url}", link.url %></p>
-        <p class=>Short: <%= link_to "#{root_url}" + "#{link.link_id}", "#{root_url}" + "#{link.link_id}" %></p>
+        <p class=>Short: <%= link_to link.shortened_url, "#{link.shortened_url}" %></p>
         <p>Clicks: <%= link.click_count %></p>
       </div>
       <div class="link-action">
-        <%= link_to "Edit", link, class: "show-link-btn", id: "show-link-#{link.id}" %>
-        <button class="copy-btn" data-clipboard-text="<%= "#{root_url}" + "#{link.link_id}" %>">Copy</button>
+        <%= link_to "Edit", link_edit_path(link), class: "show-link-btn", id: "show-link-#{link.id}" %>
+        <button class="copy-btn" data-clipboard-text="<%= "#{link.shortened_url}" %>">Copy</button>
         <% if current_user && (current_user.admin? || current_user.user?) %>
           <%= button_to "Delete", link_path(link), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-link-btn" %>
         <% end %>
