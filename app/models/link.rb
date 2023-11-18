@@ -7,6 +7,8 @@ class Link < ApplicationRecord
   has_many :events, class_name: 'Ahoy::Event', as: :subject
 
   def click_count
-    Ahoy::Event.where(name: "Link clicked").where("json_extract(properties, '$.link_id.id') = ?", id).count
+    Ahoy::Event.where(name: "Link clicked")
+              .where("properties::json -> 'link_id' ->> 'id' = ?", id.to_s)
+              .count
   end
 end

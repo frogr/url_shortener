@@ -11,14 +11,17 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2023_11_10_032134) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "ahoy_events", force: :cascade do |t|
-    t.integer "visit_id"
-    t.integer "user_id"
+    t.bigint "visit_id"
+    t.bigint "user_id"
     t.string "name"
     t.text "properties"
     t.datetime "time"
     t.string "subject_type"
-    t.integer "subject_id"
+    t.bigint "subject_id"
     t.index ["name", "time"], name: "index_ahoy_events_on_name_and_time"
     t.index ["subject_type", "subject_id"], name: "index_ahoy_events_on_subject"
     t.index ["user_id"], name: "index_ahoy_events_on_user_id"
@@ -28,7 +31,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_032134) do
   create_table "ahoy_visits", force: :cascade do |t|
     t.string "visit_token"
     t.string "visitor_token"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "ip"
     t.text "user_agent"
     t.text "referrer"
@@ -81,7 +84,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_032134) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["slug"], name: "index_links_on_slug", unique: true
     t.index ["user_id"], name: "index_links_on_user_id"
   end
