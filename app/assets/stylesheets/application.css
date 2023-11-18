@@ -305,32 +305,32 @@ input[type="password"] {
   margin-right: auto;
 }
 
-@media (max-width: 1237px) {
+@media (max-width: 1200px) {
   #links {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
   }
 
-  .form-container {
-    width: 85%;
-    margin-top: 15px;
+  .link-item {
+    max-width: none;
   }
 
-  input[type="email"],
-  input[type="password"] {
-    width: calc(100% - 20px);
+  .link-content {
+    padding: 10px;
   }
 
   .link-action {
     flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 5px;
+    justify-content: space-between;
+    padding: 10px;
+    gap: 10px;
   }
 
   .show-link-btn,
   .delete-link-btn,
-  .copy-btn,
-  .sign-out-btn {
+  .copy-btn {
     padding: 8px 12px;
     font-size: 0.8em;
+    flex-grow: 1;
   }
 }
