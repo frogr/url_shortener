@@ -3,60 +3,16 @@ require 'csv'
 
 class LinksController < ApplicationController
   before_action :set_link, only: %i[ show destroy ]
-  after_action :track_link_click, only: :show
+  after_action :track_link_click, only: %i[ id_search show ]
 
   def index
     @link = Link.new
     @links = links_for_role
-    # @links = Link.where.not(link_id: nil).page(params[:page]).per(12)
   end
 
   def edit
     @link = Link.friendly.find params[:link_id]
     render json: { url: @link.url, shortened: @link.shortened_url }
-  end
-
-  def links_for_role
-    if current_user.nil? || current_user.role == "admin"
-      @links = Link.where.not(link_id: nil).order(created_at: :desc).page(params[:page]).per(12)
-    elsif current_user.role == "user"
-      @links = Link.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(12)
-    else
-      render json: { error: "503, no links available for this role" }
-    end
-  end
-
-  def export_to_csv
-    @links = links_for_role
-
-    csv_data = CSV.generate(headers: true) do |csv|
-      csv << [ "original_url", "shortened_url", "click_count" ]
-
-      @links.each do |link|
-        csv << [ link.url, full_url(link.slug), link.click_count]
-      end
-    end
-
-    send_data csv_data, filename: "my_links.csv"
-  end
-
-  def full_url(slug)
-    root_url.to_s + slug.to_s
-  end
-
-  def id_search
-    @link = Link.find_by(link_id: params[:link_id])
-    if @link.present?
-      redirect_to link_url(@link)
-    else
-      render json: { error: "404, link not found" }, status: :not_found
-    end
-  end
-
-  def show
-    url = @link.url
-    url = "https://#{url}" unless url.starts_with?('http://', 'https://')
-    redirect_to url, allow_other_host: true
   end
 
   def new
@@ -91,7 +47,44 @@ class LinksController < ApplicationController
     end
   end
 
+  def id_search
+    @link = Link.find_by(link_id: params[:link_id])
+    if @link.present?
+      redirect_to @link.full_url, allow_other_host: true
+    else
+      render json: { error: "404, link not found" }, status: :not_found
+    end
+  end
+
   private
+
+    def links_for_role
+    if current_user.nil? || current_user.role == "admin"
+      @links = Link.where.not(link_id: nil).order(created_at: :desc).page(params[:page]).per(12)
+    elsif current_user.role == "user"
+      @links = Link.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(12)
+    else
+      render json: { error: "503, no links available for this role" }
+    end
+  end
+
+  def export_to_csv
+    @links = links_for_role
+
+    csv_data = CSV.generate(headers: true) do |csv|
+      csv << [ "original_url", "shortened_url", "click_count" ]
+
+      @links.each do |link|
+        csv << [ link.url, full_url(link.slug), link.click_count]
+      end
+    end
+
+    send_data csv_data, filename: "my_links.csv"
+  end
+
+  def full_url(slug)
+    root_url.to_s + slug.to_s
+  end
 
   def new_unique_id
     loop do

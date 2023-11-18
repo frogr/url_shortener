@@ -13,6 +13,12 @@ class Link < ApplicationRecord
   end
 
   def shortened_url
-    ENV["ROOT_URL"] + "/" + self.link_id
+    ENV["ROOT_URL"] + self.link_id
+  end
+
+  def full_url
+    url = self.url
+    url = "https://#{url}" unless url.start_with?('http://', 'https://')
+    url
   end
 end

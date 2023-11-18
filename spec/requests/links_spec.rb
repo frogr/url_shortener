@@ -24,10 +24,11 @@ RSpec.describe "Links" do
     let(:link) { Link.create!(url: 'http://www.google.com', link_id: 'testing') }
     let(:valid_id) { link.link_id }
     let(:invalid_id) { 'babababa' }
-    let(:valid_search) { get "/search/#{valid_id}" }
-    let(:invalid_search) { get "/search/#{invalid_id}"}
+    let(:valid_search) { get "/#{valid_id}" }
+    let(:invalid_search) { get "/#{invalid_id}"}
 
     it "redirects to the URL when given a valid ID" do
+      binding.pry
       valid_search
       expect(response).to have_http_status(302)
     end
