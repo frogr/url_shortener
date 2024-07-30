@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.0.0"
+ruby "3.1.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.1"
@@ -9,6 +9,8 @@ gem 'friendly_id', '~> 5.4.0'
 gem "ahoy_matey"
 gem "kaminari"
 gem "redcarpet"
+gem 'delayed_job_active_record'
+gem 'mail'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
