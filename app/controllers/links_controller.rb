@@ -4,6 +4,7 @@ require 'csv'
 class LinksController < ApplicationController
   before_action :set_link, only: %i[ show destroy ]
   after_action :track_link_click, only: %i[ id_search show ]
+  skip_before_action :verify_authenticity_token
 
   def index
     @link = Link.new
@@ -54,6 +55,11 @@ class LinksController < ApplicationController
     else
       render json: { error: "404, link not found" }, status: :not_found
     end
+  end
+
+  def verification
+    puts params
+    render json: { message: "success" }
   end
 
   private
