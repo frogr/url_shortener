@@ -9,6 +9,8 @@ class LinksController < ApplicationController
   def index
     @link = Link.new
     @links = links_for_role
+    @discord_creds_avail = Rails.application.credentials['discord_bot_token'].present?
+    puts @discord_creds_avail
   end
 
   def edit
